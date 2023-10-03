@@ -1,0 +1,179 @@
+@mixin shadow() {
+  content: "";
+  background: linear-gradient(270deg, $purple, $green, $purple, $green, $purple);
+  position: absolute;
+  top: .2rem;
+  left: .2rem;
+  color: $white;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  background-size: 400%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: shadow-2 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+#principal {
+  height: 95vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  h1:before, h2:before {
+    content: attr(data-content);
+    background: linear-gradient(15deg, $purple, $green, $purple, $green, $purple);
+    position: absolute;
+    top: .2rem;
+    left: .2rem;
+    color: $white;
+    filter: blur(30px);
+    -webkit-filter: blur(30px);
+    background-size: 400%;
+    z-index: -1;
+    width: 100%;
+    animation: shadow-1 20s linear infinite;
+  }
+  h2 {
+    font-weight: 400;
+    width: 80%;
+    text-align: center;
+    &:before {
+      content: attr(data-content);
+      background: linear-gradient(15deg, $purple, $green, $purple, $green, $purple);
+      position: absolute;
+      top: .2rem;
+      left: .2rem;
+      color: $white;
+      filter: blur(30px);
+      -webkit-filter: blur(30px);
+      background-size: 400%;
+      z-index: -1;
+      width: 100%;
+      animation: shadow-1 20s linear infinite;
+    }
+  }
+  #coleccion-botones {
+    margin-top: 10px;
+    
+    a {  
+      img {
+        height: 40px;
+        transition: transform .3s ease-in-out;
+        &:before {
+          @include shadow();
+        }
+        &:hover {
+          transform: translateY(-5px);
+          transition: transform .3s ease-in-out;
+        }
+      }
+    }
+  }
+  * {
+    color: $white;
+    font-family: $title;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+  }
+}
+
+#flecha {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  transform: rotate(45deg) translateX(-2vh) translateY(-2vh);
+  border-bottom: 3px solid $white;
+  border-right: 3px solid $white;
+  transition: all .3s ease;
+  &:before {
+    @include shadow();
+  }
+  &:hover {
+    border-bottom: 3px solid $black;
+    border-right: 3px solid $black;
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+}
+
+@keyframes shadow-1 {
+  0% {
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  50% {
+    background-position: 400% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  100% {
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes shadow-2 {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@mixin principalMediaQueries($h1, $h2, $a_m, $h) {
+  #principal {
+    h1 {
+      font-size: $h1;
+    }
+    h2 {
+      font-size: $h2;
+    }
+    #coleccion-botones {
+      a {
+        margin-left: $a_m;
+        margin-right: $a_m;
+        height: $h;
+
+        img {
+          height: $h;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  @include principalMediaQueries(40px, 18px, 8px, 40px);
+}
+
+@media only screen and (min-width: 600px) {
+  @include principalMediaQueries(48px, 20px, 8px, 45px);
+}
+
+@media only screen and (min-width: 768px) {
+  @include principalMediaQueries(52px, 24px, 8px, 50px);
+}
+
+@media only screen and (min-width: 992px) {
+  @include principalMediaQueries(56px, 28px, 10px, 60px);
+}
+
+@media only screen and (min-width: 1200px) {
+  @include principalMediaQueries(72px, 34px, 10px, 70px);
+}

@@ -1,0 +1,98 @@
+#header {
+  background-color: $black;
+  height: 85px;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 3;
+  h1 {
+    color: $white;
+    font-family: $title;
+    &:hover {
+      color: $green;
+      cursor: pointer;
+    }
+  }
+  a {
+    display: inline-block;
+    color: $white;
+    font-family: $title;
+    position: relative;
+    width: max-content;
+    height: max-content;
+    &:hover {
+      color: $green;
+      cursor: pointer;
+    }
+    .barra-1 {
+      content: "";
+      position: absolute;
+      width: 52%;
+      height: 3px;
+      border-radius: 3px;
+      bottom: 0;
+      left: 0;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform .3s ease-in-out;
+      background-color: $green;
+    }
+    
+    .barra-2 {
+      content: "";
+      position: absolute;
+      width: 52%;
+      height: 3px;
+      border-radius: 3px;
+      bottom: 0;
+      right: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform .3s ease-in-out;
+      background-color: $green;
+    }
+  }
+}
+
+.barra-1-moved {
+  transform-origin: right !important;
+  transform: scaleX(1) !important;
+}
+
+.barra-2-moved {
+  transform-origin: left !important;
+  transform: scaleX(1) !important;
+}
+
+@mixin headerMediaQueries($h1, $a) {
+  #header {
+    h1 {
+      font-size: $h1;
+    }
+    a {
+      font-size: $a;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  @include headerMediaQueries(26px, 16px);
+}
+
+@media only screen and (min-width: 600px) {
+  @include headerMediaQueries(26px, 16px);
+}
+
+@media only screen and (min-width: 768px) {
+  @include headerMediaQueries(32px, 16px);
+}
+
+@media only screen and (min-width: 992px) {
+  @include headerMediaQueries(32px, 18px);
+}
+
+@media only screen and (min-width: 1200px) {
+  @include headerMediaQueries(32px, 18px);
+}
