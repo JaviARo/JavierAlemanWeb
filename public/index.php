@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+
+session_start(); 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Javier Alemán</title>
-  <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
 </head>
 
 <body onload="headerChange()">
@@ -33,16 +39,16 @@
       especializado en front-end</h2>
     <div id="coleccion-botones">
       <a href="https://www.linkedin.com/in/javier-alem%C3%A1n-rodr%C3%ADguez-4975a1285/" target="_blank"><img
-          src="./public/img/linkedin.png"></a>
-      <a href="https://github.com/JaviARo" target="_blank"><img src="./public/img/github.png"></a>
-      <a href="./public/CV-16-07-23.pdf" target="_blank"><img src="./public/img/pdf.png"></a>
+          src="./img/linkedin.png"></a>
+      <a href="https://github.com/JaviARo" target="_blank"><img src="./img/github.png"></a>
+      <a href="./pdf/CV-16-07-23.pdf" target="_blank"><img src="./img/pdf.png"></a>
     </div>
   </div>
   <div data-content="o" id="flecha" onclick="scrollToY(1)"></div>
   <div class="seccion" id="sobre-mi">
     <h1>Sobre mi</h1>
     <div class="debajo">
-      <img id="foto-perfil" src="./public/img/yo.JPG" />
+      <img id="foto-perfil" src="./img/yo.JPG" />
       <p>Desarrollador de aplicaciones especializado en front-end, interesado en la tecnología y en aplicar sus
         conocimientos así como mejorar. <br /><br />Titulado en Desarrollo de Aplicaciones Multiplataforma. <br /><br /> 2 meses de contrato en prácticas desarrollando una aplicación de
         gestión interna para trabajos de serigrafía.</p>
@@ -53,44 +59,44 @@
     <p>He aprendido y puesto en práctica las siguientes tecnologías para realizar mis proyectos:</p>
     <div class="grid-img">
       <div class="container-img">
-        <img src="./public/img/html.png" />
+        <img src="./img/html.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/css.png" />
+        <img src="./img/css.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/js.png" />
+        <img src="./img/js.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/react.png" />
+        <img src="./img/react.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/php.png" />
+        <img src="./img/php.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/sass.png" />
+        <img src="./img/sass.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/styled-components.png" />
+        <img src="./img/styled-components.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/mysql.png" />
+        <img src="./img/mysql.png" />
       </div>
       <div class="container-img">
-        <img src="./public/img/laravel.png" />
+        <img src="./img/laravel.png" />
       </div>
       <div class="container-img" id="center">
-        <img src="./public/img/figma.png" />
+        <img src="./img/figma.png" />
       </div>
     </div>
   </div>
   <div class="seccion" id="contacto">
     <h1>Contacto</h1>
     <div class="foto-email">
-      <img src="./public/img/mensaje-1.png">
+      <img src="./img/mensaje-1.png">
     </div>
     <p>javialemanrod@gmail.com</p>
-    <form id="form-mensaje" method='post' action='createmensaje.php'>
+    <form id="form-mensaje" method='post' action='php/createmensage.php'>
       <label id="label-nombre">
         <div class="label-texto">
           <p>Nombre y apellidos</p>
@@ -125,7 +131,7 @@
       echo '
       <div class="fondo-mensaje">
         <div>
-          <img src="./public/img/mensaje-2.png">
+          <img src="./img/mensaje-2.png">
           <h1>¡Mensaje enviado!</h1>
         </div>
       </div>
@@ -134,7 +140,7 @@
     }
   ?>
   
-  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="./js/script.js"></script>
 </body>
 
 </html>

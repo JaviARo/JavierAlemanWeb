@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require __DIR__ . '/../../vendor/autoload.php';
+
 $_SESSION['enviado'] = "si";
 
 $nombre = $_POST['nombre'];
@@ -38,5 +40,5 @@ mysqli_stmt_bind_param(
 
 mysqli_stmt_execute($stmt);
 
-header("location:./index.php");
+header("location:../index.php");
 ?>

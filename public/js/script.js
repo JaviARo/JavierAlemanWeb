@@ -249,12 +249,12 @@ fotoEmailImg = fotoEmail.querySelector("img");
 fotoEmail.addEventListener('mouseover', function() {
   fotoEmail.classList.add('foto-email-blanco');
   setTimeout(function() {
-    fotoEmailImg.src = "./public/img/mensaje-3.png";
+    fotoEmailImg.src = "./img/mensaje-3.png";
   }, 150);
 })
 fotoEmail.addEventListener('mouseleave', function() {
   fotoEmail.classList.remove('foto-email-blanco');
   setTimeout(function() {
-    fotoEmailImg.src = "./public/img/mensaje-1.png";
+    fotoEmailImg.src = "./img/mensaje-1.png";
   }, 150);
 })
