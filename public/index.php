@@ -140,7 +140,7 @@ require __DIR__ . '/../vendor/autoload.php';
     }
   ?>
   
-  <script type="text/javascript" src="./js/script.js"></script>
+  <script type="text/javascript" src="../api/script.js"></script>
 </body>
 
 </html>
