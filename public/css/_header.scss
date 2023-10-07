@@ -79,6 +79,11 @@
 
 @media only screen and (max-width: 600px) {
   @include headerMediaQueries(26px, 16px);
+  #header {
+    a {
+      display: none;
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {

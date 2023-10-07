@@ -3,8 +3,6 @@
 
   "builds": [
 
-    {"src": "/api/**", "use": "vercel-php@0.6.0" },
-
     {"src": "/public/**", "use": "@vercel/static" }
 
   ],
@@ -16,14 +14,6 @@
       "src": "/(css|js)/(.*)",
 
       "dest": "public/$1/$2"
-
-    },
-
-    {
-
-      "src": "/php/(.*)",
-
-      "dest": "api/$1"
 
     },
 
@@ -47,7 +37,7 @@
 
       "src": "/(.*)",
 
-      "dest": "/api/index.php"
+      "dest": "public/index.html"
 
     }
   ]

@@ -1,11 +1,3 @@
-<?php 
-
-session_start(); 
-
-require __DIR__ . '/../vendor/autoload.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +6,8 @@ require __DIR__ . '/../vendor/autoload.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Javier Alemán</title>
   <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+  <script type="module" src="./js/message.js"></script>
+  <script type="module" src="./js/config.js"></script>
 </head>
 
 <body onload="headerChange()">
@@ -44,13 +38,14 @@ require __DIR__ . '/../vendor/autoload.php';
       <a href="./pdf/CV-16-07-23.pdf" target="_blank"><img src="./img/pdf.png"></a>
     </div>
   </div>
-  <div data-content="o" id="flecha" onclick="scrollToY(1)"></div>
+  <div id="flecha" onclick="scrollToY(1)"></div>
   <div class="seccion" id="sobre-mi">
     <h1>Sobre mi</h1>
     <div class="debajo">
       <img id="foto-perfil" src="./img/yo.JPG" />
       <p>Desarrollador de aplicaciones especializado en front-end, interesado en la tecnología y en aplicar sus
-        conocimientos así como mejorar. <br /><br />Titulado en Desarrollo de Aplicaciones Multiplataforma. <br /><br /> 2 meses de contrato en prácticas desarrollando una aplicación de
+        conocimientos así como mejorar. <br /><br />Titulado en Desarrollo de Aplicaciones Multiplataforma. <br /><br />
+        2 meses de contrato en prácticas desarrollando una aplicación de
         gestión interna para trabajos de serigrafía.</p>
     </div>
   </div>
@@ -96,12 +91,13 @@ require __DIR__ . '/../vendor/autoload.php';
       <img src="./img/mensaje-1.png">
     </div>
     <p>javialemanrod@gmail.com</p>
-    <form id="form-mensaje" method='post' action='php/createmensage.php'>
+    <form id="form-mensaje" method='post' action='../api/createmensage.php'>
       <label id="label-nombre">
         <div class="label-texto">
           <p>Nombre y apellidos</p>
         </div>
-        <input id="nombre" class="form-input" type="text" maxlength="50" name="nombre" onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)">
+        <input id="nombre" class="form-input" type="text" maxlength="50" name="nombre" onkeydown="leftCharacters(this)"
+          onkeyup="leftCharacters(this)">
         <p class="p-input">50</p>
       </label>
       <label id="label-email">
@@ -109,7 +105,8 @@ require __DIR__ . '/../vendor/autoload.php';
           <p>E-mail</p>
           <p class="campo-obligatorio">*Campo obligatorio</p>
         </div>
-        <input id="email" class="form-input" type="text" maxlength="50" name="email" onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)">
+        <input id="email" class="form-input" type="email" maxlength="50" name="email" onkeydown="leftCharacters(this)"
+          onkeyup="leftCharacters(this)">
         <p class="p-input">50</p>
       </label>
       <label id="label-mensaje">
@@ -117,7 +114,8 @@ require __DIR__ . '/../vendor/autoload.php';
           <p>Escriba aquí su mensaje</p>
           <p class="campo-obligatorio">*Campo obligatorio</p>
         </div>
-        <textarea id="mensaje" class="form-input" name="mensaje" rows="3" maxlength="500" onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)"></textarea>
+        <textarea id="mensaje" class="form-input" name="mensaje" rows="3" maxlength="500"
+          onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)"></textarea>
         <p class="p-textarea">500</p>
       </label>
       <div class="boton-form" onclick="sendMessage()">
@@ -125,22 +123,13 @@ require __DIR__ . '/../vendor/autoload.php';
       </div>
     </form>
   </div>
-
-  <?php
-    if (isset($_SESSION['enviado'])) {
-      echo '
-      <div class="fondo-mensaje">
-        <div>
-          <img src="./img/mensaje-2.png">
-          <h1>¡Mensaje enviado!</h1>
-        </div>
-      </div>
-      ';
-      unset($_SESSION['enviado']);
-    }
-  ?>
-  
-  <script type="text/javascript" src="../api/script.js"></script>
+  <div class="fondo-mensaje">
+    <div>
+      <img src="./img/mensaje-2.png">
+      <h1>¡Mensaje enviado!</h1>
+    </div>
+  </div>
+  <script type="text/javascript" src="./js/script.js"></script>
 </body>
 
 </html>

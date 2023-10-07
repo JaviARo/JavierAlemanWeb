@@ -121,6 +121,9 @@ h1 {
   #header a {
     font-size: 16px;
   }
+  #header a {
+    display: none;
+  }
 }
 @media only screen and (min-width: 600px) {
   #header h1 {
@@ -307,6 +310,9 @@ h1 {
   }
   #principal #coleccion-botones a img {
     height: 40px;
+  }
+  #flecha {
+    transform: rotate(45deg) translateX(-10vh) translateY(-10vh);
   }
 }
 @media only screen and (min-width: 600px) {

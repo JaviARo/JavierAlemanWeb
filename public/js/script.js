@@ -21,18 +21,6 @@ function headerChange() {
   tecnologiasY = document.getElementById("tecnologias").offsetTop - window.innerHeight / 2;
   contactoY = document.getElementById("contacto").offsetTop - window.innerHeight / 1.6;
 
-  if (window.innerWidth < 600 && atPhone == false) {
-    document.body.removeChild(document.getElementById("header"));
-    var phoneHeader = elementFromHtml('<div id="header"><h1>Javier Alemán</h1></div>');
-    document.body.appendChild(phoneHeader);
-    atPhone = true;
-  } else if (window.innerWidth >= 600 && atPhone == true) {
-    document.body.removeChild(document.getElementById("header"));
-    var desktopHeader = elementFromHtml('<div id="header"><h1 onclick="scrollToY(0)">Javier Alemán</h1><a id="a-sobre-mi" onclick="scrollToY(1)">Sobre mi<div class="barra-1"></div><div class="barra-2"></div></a><a id="a-tecnologias" onclick="scrollToY(2)">Tecnologías<div class="barra-1"></div><div class="barra-2"></div></a><a id="a-contacto" onclick="scrollToY(3)">Contacto<div class="barra-1"></div><div class="barra-2"></div></a></div>');
-    document.body.appendChild(desktopHeader);
-    atPhone = false;
-  }
-
   headerBarScroll();
 }
 
@@ -208,41 +196,6 @@ function leftCharacters(input) {
       break;
   }
 }
-
-function sendMessage() {
-  var labelEmail = document.getElementById("label-email");
-  var labelMensaje = document.getElementById("label-mensaje");
-  var email = document.getElementById("email");
-  var mensaje = document.getElementById("mensaje");
-  if(email.value.trim() == "" || mensaje.value.trim() == "") {
-    if(email.value.trim() == "") {
-      labelEmail.getElementsByClassName("campo-obligatorio")[0].classList.add("mostrar");
-    }
-    if(mensaje.value.trim() == "") {
-      labelMensaje.getElementsByClassName("campo-obligatorio")[0].classList.add("mostrar");
-    }
-  } else {
-    document.getElementById("form-mensaje").submit();
-  }
-}
-
-function messageSent() {
-  if(document.querySelector(".fondo-mensaje")) {
-    const fondo = document.querySelector(".fondo-mensaje");
-    fondo.style.display = "flex";
-    setTimeout(function() {
-      fondo.classList.add("animacion-fondo");
-    }, 100);
-    setTimeout(function() {
-      fondo.classList.remove("animacion-fondo");
-    }, 1900);
-    setTimeout(function() {
-      fondo.style.display = "none";
-    }, 2500);
-  }
-}
-
-window.addEventListener('load', messageSent);
 
 fotoEmail = document.querySelector(".foto-email");
 fotoEmailImg = fotoEmail.querySelector("img");
