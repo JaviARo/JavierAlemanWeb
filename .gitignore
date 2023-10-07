@@ -2,10 +2,6 @@
 
 .vercel
 
-public/js/config.js
-
-public/js/config_og.js
-
 /node_modules
 
 composer.json
@@ -13,4 +9,9 @@ composer.json
 package-lock.json
 
 package.json
+
+public/js/config.js
+
+public/js/config_og.js
+
 
