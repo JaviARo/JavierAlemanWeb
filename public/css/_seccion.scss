@@ -34,6 +34,79 @@
     }
   }
 
+  .debajo-proyecto {
+    @extend .debajo;
+    .proyecto {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid $white;
+      transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        background-color: $purple;
+        transform: translateY(-10px);
+      }
+
+      .proyecto-visible {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .img-proyecto {
+          width: 90%;
+          border-radius: 5px;
+          margin-top: 5%;
+          border: 2px solid $white;
+          margin-bottom: 3%;
+        }
+
+        .titulo-tecnologias {
+          width: 90%;
+          margin-bottom: 3%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          position: relative;
+          height: max-content;
+          align-items: center;
+
+          p {
+            font-family: $title;
+            width: max-content;
+          }
+
+          .img-tecnologias {
+            position: absolute;
+            right: 0;
+            width: max-content;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2vw;
+            align-items: center;
+
+            img {
+              border: 0;
+              margin: 0;
+              width: 4vw;
+              border-radius: 0px;
+            }
+          }
+        }
+
+        .proyecto-oculto {
+          position: absolute;
+          height: 100%;
+          top: 100%;
+          padding: 5%;
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
   .grid-img {
     display: grid;
 
@@ -170,16 +243,14 @@
   visibility: visible !important;
 }
 
-#sobre-mi {
+#sobre-mi,
+#proyectos {
   background-color: $black;
 }
 
-#tecnologias {
-  background-color: $purple;
-}
-
+#tecnologias,
 #contacto {
-  background-color: $black;
+  background-color: $purple;
 }
 
 .boton-form {
@@ -215,7 +286,7 @@
 }
 
 .boton-form:hover {
-  background-color: $purple;
+  background-color: $black;
   transform: translateY(-3px);
 }
 
@@ -288,16 +359,16 @@
 
 @media only screen and (max-width: 600px) {
   @include headerMediaQueries(20px, 24px, 60%, 5vw, 3, 1fr, 5px, 80%, 16px, 8px, 14px, 2, 4, 50px, 2px);
+
   .debajo {
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    grid-gap: 0px !important;
+    grid-gap: 20px !important;
 
     #foto-perfil {
       width: 40vw !important;
       height: 40vw !important;
-      margin-bottom: 20px;
     }
   }
 }
@@ -308,12 +379,52 @@
 
 @media only screen and (min-width: 768px) {
   @include headerMediaQueries(25px, 28px, 70%, 3vw, 5, 1fr, 5px, 60%, 20px, 10px, 17px, 5, 2, 70px, 3px);
+  .debajo-proyecto {
+    width: 60vw !important;
+
+    .img-tecnologias {
+      gap: 1.5vw !important;
+
+      img {
+        width: 3vw !important;
+      }
+    }
+  }
+  
+}
+
+@media only screen and (max-width: 992px) {
+  .debajo-proyecto {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 20px !important;
+  }
 }
 
 @media only screen and (min-width: 992px) {
   @include headerMediaQueries(30px, 32px, 70%, 3vw, 5, 1fr, 5px, 60%, 24px, 10px, 17px, 5, 2, 80px, 3px);
+  .debajo-proyecto {
+    width: 80vw !important;
+    grid-gap: 5vw !important;
+    p {
+      font-size: 20px;
+    }
+    .img-tecnologias {
+      gap: 1vw !important;
+
+      img {
+        width: 2vw !important;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   @include headerMediaQueries(30px, 36px, 80%, 2vw, 10, 1fr, 5px, 60%, 26px, 12px, 20px, 10, 1, 90px, 4px);
+  .debajo-proyecto {
+    p {
+      font-size: 26px;
+    }
+  }
 }

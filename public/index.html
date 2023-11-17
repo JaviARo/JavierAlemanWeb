@@ -13,121 +13,186 @@
 <body onload="headerChange()">
 
   <div id="header">
-    <h1 onclick="scrollToY(0)">Javier Alemán</h1>
-    <a id="a-sobre-mi" onclick="scrollToY(1)">Sobre mi
+    <h1 onclick="scrollToElement('principal')">Javier Alemán</h1>
+    <a id="a-sobre-mi" onclick="scrollToElement('sobre-mi')">Sobre mi
       <div class="barra-1"></div>
       <div class="barra-2"></div>
     </a>
-    <a id="a-tecnologias" onclick="scrollToY(2)">Tecnologías
+    <a id="a-tecnologias" onclick="scrollToElement('tecnologias')">Tecnologías
       <div class="barra-1"></div>
       <div class="barra-2"></div>
     </a>
-    <a id="a-contacto" onclick="scrollToY(3)">Contacto
+    <a id="a-proyectos" onclick="scrollToElement('proyectos')">Proyectos
+      <div class="barra-1"></div>
+      <div class="barra-2"></div>
+    </a>
+    <a id="a-contacto" onclick="scrollToElement('contacto')">Contacto
       <div class="barra-1"></div>
       <div class="barra-2"></div>
     </a>
   </div>
-  <div id="principal">
-    <h1 data-content="Javier Alemán">Javier Alemán</h1>
-    <h2 data-content="Desarrollador de aplicaciones especializado en front-end">Desarrollador de aplicaciones
-      especializado en front-end</h2>
-    <div id="coleccion-botones">
-      <a href="https://www.linkedin.com/in/javier-alem%C3%A1n-rodr%C3%ADguez-4975a1285/" target="_blank"><img
-          src="./img/linkedin.png"></a>
-      <a href="https://github.com/JaviARo" target="_blank"><img src="./img/github.png"></a>
-      <a href="./pdf/CV-16-07-23.pdf" target="_blank"><img src="./img/pdf.png"></a>
-    </div>
-  </div>
-  <div id="flecha" onclick="scrollToY(1)"></div>
-  <div class="seccion" id="sobre-mi">
-    <h1>Sobre mi</h1>
-    <div class="debajo">
-      <img id="foto-perfil" src="./img/yo.JPG" />
-      <p>Desarrollador de aplicaciones especializado en front-end, interesado en la tecnología y en aplicar sus
-        conocimientos así como mejorar. <br /><br />Titulado en Desarrollo de Aplicaciones Multiplataforma. <br /><br />
-        2 meses de contrato en prácticas desarrollando una aplicación de
-        gestión interna para trabajos de serigrafía.</p>
-    </div>
-  </div>
-  <div class="seccion" id="tecnologias">
-    <h1>Tecnologías</h1>
-    <p>He aprendido y puesto en práctica las siguientes tecnologías para realizar mis proyectos:</p>
-    <div class="grid-img">
-      <div class="container-img">
-        <img src="./img/html.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/css.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/js.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/react.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/php.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/sass.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/styled-components.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/mysql.png" />
-      </div>
-      <div class="container-img">
-        <img src="./img/laravel.png" />
-      </div>
-      <div class="container-img" id="center">
-        <img src="./img/figma.png" />
+  <div id="pagina">
+    <div id="principal">
+      <h1 data-content="Javier Alemán">Javier Alemán</h1>
+      <h2 data-content="Desarrollador full-stack">Desarrollador full-stack</h2>
+      <div id="coleccion-botones">
+        <a href="https://www.linkedin.com/in/javier-alem%C3%A1n-rodr%C3%ADguez-4975a1285/" target="_blank"><img
+            src="./img/linkedin.png"></a>
+        <a href="https://github.com/JaviARo" target="_blank"><img src="./img/github.png"></a>
+        <a href="./pdf/Javier_AlemanRodriguez_curriculum.pdf" target="_blank"><img src="./img/pdf.png"></a>
       </div>
     </div>
-  </div>
-  <div class="seccion" id="contacto">
-    <h1>Contacto</h1>
-    <div class="foto-email">
-      <img src="./img/mensaje-1.png">
+    <div id="div-flecha">
+      <div id="flecha" onclick="scrollToElement('sobre-mi')"></div>
     </div>
-    <p>javialemanrod@gmail.com</p>
-    <form id="form-mensaje" method='post' action='../api/createmensage.php'>
-      <label id="label-nombre">
-        <div class="label-texto">
-          <p>Nombre y apellidos</p>
+    <div class="seccion" id="sobre-mi">
+      <h1>Sobre mi</h1>
+      <div class="debajo">
+        <img id="foto-perfil" src="./img/yo.JPG" />
+        <p>Entusiasta de la elaboración de
+          aplicaciones, enfocado en la interfaz y
+          experiencia de usuario. Siempre
+          perfeccionando mis habilidades y en
+          constante aprendizaje. Me complace
+          tener una visión global y entendimiento
+          del trabajo a realizar, adaptándome a las
+          circunstancias e involucrándome
+          ofreciendo soluciones. <br /><br />Titulado en Desarrollo de Aplicaciones Multiplataforma.
+          <br /><br />
+          Experiencia desarrollando una aplicación de gestión interna empresarial.
+        </p>
+      </div>
+    </div>
+    <div class="seccion" id="tecnologias">
+      <h1>Tecnologías</h1>
+      <p>He aprendido y puesto en práctica las siguientes tecnologías para realizar mis proyectos:</p>
+      <div class="grid-img">
+        <div class="container-img">
+          <img src="./img/html.png" />
         </div>
-        <input id="nombre" class="form-input" type="text" maxlength="50" name="nombre" onkeydown="leftCharacters(this)"
-          onkeyup="leftCharacters(this)">
-        <p class="p-input">50</p>
-      </label>
-      <label id="label-email">
-        <div class="label-texto">
-          <p>E-mail</p>
-          <p class="campo-obligatorio">*Campo obligatorio</p>
+        <div class="container-img">
+          <img src="./img/css.png" />
         </div>
-        <input id="email" class="form-input" type="email" maxlength="50" name="email" onkeydown="leftCharacters(this)"
-          onkeyup="leftCharacters(this)">
-        <p class="p-input">50</p>
-      </label>
-      <label id="label-mensaje">
-        <div class="label-texto">
-          <p>Escriba aquí su mensaje</p>
-          <p class="campo-obligatorio">*Campo obligatorio</p>
+        <div class="container-img">
+          <img src="./img/js.png" />
         </div>
-        <textarea id="mensaje" class="form-input" name="mensaje" rows="3" maxlength="500"
-          onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)"></textarea>
-        <p class="p-textarea">500</p>
-      </label>
-      <div class="boton-form" onclick="sendMessage()">
-        <p>Enviar mensaje</p>
+        <div class="container-img">
+          <img src="./img/react.png" />
+        </div>
+        <div class="container-img">
+          <img src="./img/php.png" />
+        </div>
+        <div class="container-img">
+          <img src="./img/sass.png" />
+        </div>
+        <div class="container-img">
+          <img src="./img/styled-components.png" />
+        </div>
+        <div class="container-img">
+          <img src="./img/mysql.png" />
+        </div>
+        <div class="container-img">
+          <img src="./img/laravel.png" />
+        </div>
+        <div class="container-img" id="center">
+          <img src="./img/figma.png" />
+        </div>
       </div>
-    </form>
+    </div>
+    <div class="seccion" id="proyectos">
+      <h1>Proyectos</h1>
+      <div class="debajo-proyecto">
+        <a class="proyecto" id="unigo" href="https://github.com/JaviARo/UniGo" target="_blank"
+          onmouseenter="scrollDown(this)" onmouseleave="scrollUp(this)">
+          <div class="proyecto-visible">
+            <img class="img-proyecto" src="./img/unigo.png">
+            <div class="titulo-tecnologias">
+              <p>UniGo</p>
+              <div class="img-tecnologias">
+                <img src="./img/react.png">
+                <img src="./img/css.png">
+                <img src="./img/laravel.png">
+              </div>
+            </div>
+            <div class="proyecto-oculto">
+              <p>Aplicación de diseño de prendas de ropa, donde puedes colocar una imagen sobre una prenda de ropa.
+                Desarrollada de forma individual con React, Laravel y Vanilla CSS.</p>
+            </div>
+          </div>
+        </a>
+        <a class="proyecto" id="healthy-thinking" href="https://github.com/Sutteprutt1/Healthy-Thinking-GranCanaria"
+          target="_blank" onmouseenter="scrollDown(this)" onmouseleave="scrollUp(this)">
+          <div class="proyecto-visible">
+            <img class="img-proyecto" src="./img/healthy-thinking.png">
+            <div class="titulo-tecnologias">
+              <p>Healthy Thinking</p>
+              <div class="img-tecnologias">
+                <img src="./img/react.png">
+                <img src="./img/styled-components.png">
+                <img src="./img/sequelize.png">
+              </div>
+            </div>
+            <div class="proyecto-oculto">
+              <p>Aplicación para agendar y localizar actividades deportivas. Desarrollada grupalmente con React,
+                Sequelize y Styled Components. <br /><br /> Mis principales contribuciones son en el diseño y en el
+                front-end.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="seccion" id="contacto">
+      <h1>Contacto</h1>
+      <div class="foto-email">
+        <img src="./img/mensaje-1.png">
+      </div>
+      <p>javialemanrod@gmail.com</p>
+      <form id="form-mensaje" method='post' action='../api/createmensage.php'>
+        <label id="label-nombre">
+          <div class="label-texto">
+            <p>Nombre y apellidos</p>
+          </div>
+          <input id="nombre" class="form-input" type="text" maxlength="50" name="nombre"
+            onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)">
+          <p class="p-input">50</p>
+        </label>
+        <label id="label-email">
+          <div class="label-texto">
+            <p>E-mail</p>
+            <p class="campo-obligatorio">*Campo obligatorio</p>
+          </div>
+          <input id="email" class="form-input" type="email" maxlength="50" name="email" onkeydown="leftCharacters(this)"
+            onkeyup="leftCharacters(this)">
+          <p class="p-input">50</p>
+        </label>
+        <label id="label-mensaje">
+          <div class="label-texto">
+            <p>Escriba aquí su mensaje</p>
+            <p class="campo-obligatorio">*Campo obligatorio</p>
+          </div>
+          <textarea id="mensaje" class="form-input" name="mensaje" rows="3" maxlength="500"
+            onkeydown="leftCharacters(this)" onkeyup="leftCharacters(this)"></textarea>
+          <p class="p-textarea">500</p>
+        </label>
+        <div class="boton-form" onclick="sendMessage()">
+          <p>Enviar mensaje</p>
+        </div>
+      </form>
+    </div>
   </div>
   <div class="fondo-mensaje">
-    <div>
+    <div id="div-mensaje">
+      <div id="carga"></div>
+      <h1 id="h1-enviando">Enviando mensaje...</h1>
       <img src="./img/mensaje-2.png">
-      <h1>¡Mensaje enviado!</h1>
+      <h1 id="h1-enviado">¡Mensaje enviado!</h1>
     </div>
+  </div>
+  <div id="elemento-seguidor">
+    <div id="div-puntero">
+      <div id="puntero"></div>
+    </div>
+    <p>Visitar enlace de Github</p>
   </div>
   <script type="text/javascript" src="./js/script.js"></script>
 </body>

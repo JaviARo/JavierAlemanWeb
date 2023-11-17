@@ -6,19 +6,60 @@ function elementFromHtml(html) {
   return template.content;
 }
 
+function popupText() {
+  principal = document.getElementById("principal");
+  h1 = principal.querySelector("h1");
+  h2 = principal.querySelector("h2");
+  coleccionBotones = document.getElementById("coleccion-botones");
+  boton = coleccionBotones.querySelectorAll("a");
+  h1.classList.add("mostrar-principal");
+  divFlecha = document.getElementById("div-flecha");
+  setTimeout(function () {
+    h2.classList.add("mostrar-principal");
+  }, 300);
+  setTimeout(function () {
+    img = boton[0].querySelector("img");
+    img.classList.add("mostrar-principal");
+  }, 900);
+  setTimeout(function () {
+    img = boton[1].querySelector("img");
+    img.classList.add("mostrar-principal");
+  }, 1200);
+  setTimeout(function () {
+    img = boton[2].querySelector("img");
+    img.classList.add("mostrar-principal");
+  }, 1500);
+  setTimeout(function () {
+    divFlecha.classList.add("mostrar-principal");
+  }, 1800);
+}
+
+window.addEventListener('load', popupText);
+
 var atPhone = false;
+
+var pagina = document.getElementById("pagina");
+var paginaScroll = pagina.scrollTop;
 
 var sobreMi = document.getElementById("sobre-mi");
 var tecnologias = document.getElementById("tecnologias");
+var proyectos = document.getElementById("proyectos");
 var contacto = document.getElementById("contacto");
+
+var paginaRect = pagina.getBoundingClientRect();
+var sobreMiRect = sobreMi.getBoundingClientRect();
+var tecnologiasRect = tecnologias.getBoundingClientRect();
+var contactoRect = contacto.getBoundingClientRect();
 
 var sobreMiY = document.getElementById("sobre-mi").offsetTop - window.innerHeight / 2;
 var tecnologiasY = document.getElementById("tecnologias").offsetTop - window.innerHeight / 2;
+var proyectosY = document.getElementById("proyectos").offsetTop - window.innerHeight / 2;
 var contactoY = document.getElementById("contacto").offsetTop - window.innerHeight / 1.6;
 
 function headerChange() {
   sobreMiY = document.getElementById("sobre-mi").offsetTop - window.innerHeight / 2;
   tecnologiasY = document.getElementById("tecnologias").offsetTop - window.innerHeight / 2;
+  var proyectosY = document.getElementById("proyectos").offsetTop - window.innerHeight / 2;
   contactoY = document.getElementById("contacto").offsetTop - window.innerHeight / 1.6;
 
   headerBarScroll();
@@ -32,12 +73,48 @@ function headerBarScroll() {
     const barra2SobreMi = document.getElementById('a-sobre-mi').getElementsByClassName("barra-2")[0];
     const barra1Tecnologias = document.getElementById('a-tecnologias').getElementsByClassName("barra-1")[0];
     const barra2Tecnologias = document.getElementById('a-tecnologias').getElementsByClassName("barra-2")[0];
+    const barra1Proyectos = document.getElementById('a-proyectos').getElementsByClassName("barra-1")[0];
+    const barra2Proyectos = document.getElementById('a-proyectos').getElementsByClassName("barra-2")[0];
     const barra1Contacto = document.getElementById('a-contacto').getElementsByClassName("barra-1")[0];
     const barra2Contacto = document.getElementById('a-contacto').getElementsByClassName("barra-2")[0];
 
-    if (window.scrollY >= sobreMiY - 1 && window.scrollY < tecnologiasY - 1) {
+    if (pagina.scrollTop >= sobreMiY - 1 && pagina.scrollTop < tecnologiasY - 1) {
       barra1SobreMi.classList.add("barra-1-moved");
       barra2SobreMi.classList.add("barra-2-moved");
+      if (barra1Tecnologias.classList.contains("barra-1-moved")) {
+        barra1Tecnologias.classList.remove("barra-1-moved");
+        barra2Tecnologias.classList.remove("barra-2-moved");
+      }
+      if (barra1Proyectos.classList.contains("barra-1-moved")) {
+        barra1Proyectos.classList.remove("barra-1-moved");
+        barra2Proyectos.classList.remove("barra-2-moved");
+      }
+      if (barra1Contacto.classList.contains("barra-1-moved")) {
+        barra1Contacto.classList.remove("barra-1-moved");
+        barra2Contacto.classList.remove("barra-2-moved");
+      }
+    } else if (pagina.scrollTop >= tecnologiasY - 1 && pagina.scrollTop < proyectosY - 1) {
+      barra1Tecnologias.classList.add("barra-1-moved");
+      barra2Tecnologias.classList.add("barra-2-moved");
+      if (barra1SobreMi.classList.contains("barra-1-moved")) {
+        barra1SobreMi.classList.remove("barra-1-moved");
+        barra2SobreMi.classList.remove("barra-2-moved");
+      }
+      if (barra1Proyectos.classList.contains("barra-1-moved")) {
+        barra1Proyectos.classList.remove("barra-1-moved");
+        barra2Proyectos.classList.remove("barra-2-moved");
+      }
+      if (barra1Contacto.classList.contains("barra-1-moved")) {
+        barra1Contacto.classList.remove("barra-1-moved");
+        barra2Contacto.classList.remove("barra-2-moved");
+      }
+    } else if (pagina.scrollTop >= proyectosY - 1 && pagina.scrollTop < contactoY - 1) {
+      barra1Proyectos.classList.add("barra-1-moved");
+      barra2Proyectos.classList.add("barra-2-moved");
+      if (barra1SobreMi.classList.contains("barra-1-moved")) {
+        barra1SobreMi.classList.remove("barra-1-moved");
+        barra2SobreMi.classList.remove("barra-2-moved");
+      }
       if (barra1Tecnologias.classList.contains("barra-1-moved")) {
         barra1Tecnologias.classList.remove("barra-1-moved");
         barra2Tecnologias.classList.remove("barra-2-moved");
@@ -46,18 +123,7 @@ function headerBarScroll() {
         barra1Contacto.classList.remove("barra-1-moved");
         barra2Contacto.classList.remove("barra-2-moved");
       }
-    } else if (window.scrollY >= tecnologiasY - 1 && window.scrollY < contactoY - 1) {
-      barra1Tecnologias.classList.add("barra-1-moved");
-      barra2Tecnologias.classList.add("barra-2-moved");
-      if (barra1SobreMi.classList.contains("barra-1-moved")) {
-        barra1SobreMi.classList.remove("barra-1-moved");
-        barra2SobreMi.classList.remove("barra-2-moved");
-      }
-      if (barra1Contacto.classList.contains("barra-1-moved")) {
-        barra1Contacto.classList.remove("barra-1-moved");
-        barra2Contacto.classList.remove("barra-2-moved");
-      }
-    } else if (window.scrollY >= contactoY - 1) {
+    } else if (pagina.scrollTop >= contactoY - 1) {
       barra1Contacto.classList.add("barra-1-moved");
       barra2Contacto.classList.add("barra-2-moved");
       if (barra1SobreMi.classList.contains("barra-1-moved")) {
@@ -68,6 +134,10 @@ function headerBarScroll() {
         barra1Tecnologias.classList.remove("barra-1-moved");
         barra2Tecnologias.classList.remove("barra-2-moved");
       }
+      if (barra1Proyectos.classList.contains("barra-1-moved")) {
+        barra1Proyectos.classList.remove("barra-1-moved");
+        barra2Proyectos.classList.remove("barra-2-moved");
+      }
     } else {
       if (barra1SobreMi.classList.contains("barra-1-moved")) {
         barra1SobreMi.classList.remove("barra-1-moved");
@@ -77,78 +147,128 @@ function headerBarScroll() {
         barra1Tecnologias.classList.remove("barra-1-moved");
         barra2Tecnologias.classList.remove("barra-2-moved");
       }
+      if (barra1Proyectos.classList.contains("barra-1-moved")) {
+        barra1Proyectos.classList.remove("barra-1-moved");
+        barra2Proyectos.classList.remove("barra-2-moved");
+      }
       if (barra1Contacto.classList.contains("barra-1-moved")) {
         barra1Contacto.classList.remove("barra-1-moved");
         barra2Contacto.classList.remove("barra-2-moved");
       }
     }
   }
-  if (window.scrollY >= sobreMiY - 1 && window.scrollY < tecnologiasY - 1) {
+  // if (sobreMiRect.top > pagina.scrollTop*1.5) {
+  //   sobreMi.classList.add("mostrar-seccion");
+  //   tecnologias.classList.remove("mostrar-seccion");
+  // } else if (tecnologiasRect.top > pagina.scrollTop) {
+  //   sobreMi.classList.add("mostrar-seccion");
+  //   tecnologias.classList.add("mostrar-seccion");
+  //   contacto.classList.remove("mostrar-seccion");
+  // } else if (contactoRect.top > pagina.scrollTop) {
+  //   sobreMi.classList.add("mostrar-seccion");
+  //   tecnologias.classList.add("mostrar-seccion");
+  //   contacto.classList.add("mostrar-seccion");
+  // } else {
+  //   sobreMi.classList.remove("mostrar-seccion");
+  // }
+  if (pagina.scrollTop >= sobreMiY - 1 && pagina.scrollTop < tecnologiasY - 1) {
     sobreMi.classList.add("mostrar-seccion");
     tecnologias.classList.remove("mostrar-seccion");
-  } else if (window.scrollY >= tecnologiasY - 1 && window.scrollY < contactoY - 1) {
+  } else if (pagina.scrollTop >= tecnologiasY - 1 && pagina.scrollTop < proyectosY - 1) {
     sobreMi.classList.add("mostrar-seccion");
     tecnologias.classList.add("mostrar-seccion");
+    proyectos.classList.remove("mostrar-seccion");
+  } else if (pagina.scrollTop >= proyectosY - 1 && pagina.scrollTop < contactoY - 1) {
+    sobreMi.classList.add("mostrar-seccion");
+    tecnologias.classList.add("mostrar-seccion");
+    proyectos.classList.add("mostrar-seccion");
     contacto.classList.remove("mostrar-seccion");
-  } else if (window.scrollY >= contactoY - 1) {
+  } else if (pagina.scrollTop >= contactoY - 1) {
     sobreMi.classList.add("mostrar-seccion");
     tecnologias.classList.add("mostrar-seccion");
+    proyectos.classList.add("mostrar-seccion");
     contacto.classList.add("mostrar-seccion");
   } else {
     sobreMi.classList.remove("mostrar-seccion");
   }
+  // console.log(pagina.scrollTop)
+  // console.log(sobreMiY)
 }
 
-window.addEventListener('scroll', headerBarScroll);
+pagina.addEventListener('scroll', headerBarScroll);
 
-function scrollToY(option) {
-  var destinationY = 0;
-  switch (option) {
-    case 0:
-      destinationY = 0;
+// function scrollToY(option) {
+//   var destinationY = 0;
+//   switch (option) {
+//     case 0:
+//       destinationY = 0;
+//       break;
+//     case 1:
+//       destinationY = document.getElementById("sobre-mi").offsetTop - paginaScroll * 0.2;
+//       break;
+//     case 2:
+//       destinationY = document.getElementById("tecnologias").offsetTop - paginaScroll * 0.3;
+//       break;
+//     case 3:
+//       destinationY = document.documentElement.scrollHeight - paginaScroll;
+//       break;
+//   }
+
+
+//   const initialY = pagina.scrollY;
+//   const diffY = destinationY - initialY;
+//   const startTime = performance.now();
+
+//   function scrollStep(timestamp) {
+//     const currentTime = timestamp || performance.now();
+//     const elapsedTime = currentTime - startTime;
+
+//     pagina.scrollTo(0, easeInOut(elapsedTime, initialY, diffY));
+
+//     if (elapsedTime < 1000) {
+//       requestAnimationFrame(scrollStep);
+//     }
+//   }
+
+//   function easeInOut(t, b, c) {
+//     // Función de aceleración para suavizar el scroll
+//     t /= 1000 / 2;
+//     if (t < 1) return (c / 2) * t * t + b;
+//     t--;
+//     return (-c / 2) * (t * (t - 2) - 1) + b;
+//   }
+
+//   requestAnimationFrame(scrollStep);
+// }
+
+function scrollToElement(elementId) {
+  const element = document.getElementById(elementId);
+  // Hacer switch con elementId
+  let para = 0;
+  console.log(String(elementId))
+  switch (String(elementId)) {
+    case 'sobre-mi':
+      para = window.innerHeight * 0.2;
       break;
-    case 1:
-      destinationY = document.getElementById("sobre-mi").offsetTop - window.innerHeight * 0.2;
-      break;
-    case 2:
-      destinationY = document.getElementById("tecnologias").offsetTop - window.innerHeight * 0.3;
-      break;
-    case 3:
-      destinationY = document.documentElement.scrollHeight - window.innerHeight;
+    case 'tecnologias':
+    case 'proyectos':
+      para = window.innerHeight * 0.3;
+      console.log(para)
       break;
   }
-
-
-  const initialY = window.scrollY;
-  const diffY = destinationY - initialY;
-  const startTime = performance.now();
-
-  function scrollStep(timestamp) {
-    const currentTime = timestamp || performance.now();
-    const elapsedTime = currentTime - startTime;
-
-    window.scrollTo(0, easeInOut(elapsedTime, initialY, diffY));
-
-    if (elapsedTime < 1000) {
-      requestAnimationFrame(scrollStep);
-    }
+  if (pagina && element) {
+    pagina.scrollTo({
+      top: element.offsetTop - para,
+      behavior: 'smooth'
+    });
   }
-
-  function easeInOut(t, b, c) {
-    // Función de aceleración para suavizar el scroll
-    t /= 1000 / 2;
-    if (t < 1) return (c / 2) * t * t + b;
-    t--;
-    return (-c / 2) * (t * (t - 2) - 1) + b;
-  }
-
-  requestAnimationFrame(scrollStep);
+  console.log(para)
 }
 
 function leftCharacters(input) {
   label = input.parentNode;
   var p = "";
-  if(label.querySelector(".p-input")){
+  if (label.querySelector(".p-input")) {
     p = label.querySelector(".p-input");
   } else {
     p = label.querySelector(".p-textarea")
@@ -158,18 +278,18 @@ function leftCharacters(input) {
     case "p-input pocos-caracteres":
     case "p-input sin-caracteres":
       p.innerHTML = 50 - input.value.length;
-      if(p.innerHTML > 25){
-        if(p.classList.contains("pocos-caracteres")) {
+      if (p.innerHTML > 25) {
+        if (p.classList.contains("pocos-caracteres")) {
           p.classList.remove("pocos-caracteres");
         }
-      } else if(p.innerHTML <= 25 && p.innerHTML > 0) {
+      } else if (p.innerHTML <= 25 && p.innerHTML > 0) {
         p.classList.add("pocos-caracteres");
-        if(p.classList.contains("sin-caracteres")) {
+        if (p.classList.contains("sin-caracteres")) {
           p.classList.remove("sin-caracteres");
         }
       } else {
         p.classList.add("sin-caracteres");
-        if(p.classList.contains("pocos-caracteres")) {
+        if (p.classList.contains("pocos-caracteres")) {
           p.classList.remove("pocos-caracteres");
         }
       }
@@ -178,18 +298,18 @@ function leftCharacters(input) {
     case "p-textarea pocos-caracteres":
     case "p-textarea sin-caracteres":
       p.innerHTML = 500 - input.value.length;
-      if(p.innerHTML > 250){
-        if(p.classList.contains("pocos-caracteres")) {
+      if (p.innerHTML > 250) {
+        if (p.classList.contains("pocos-caracteres")) {
           p.classList.remove("pocos-caracteres");
         }
-      } else if(p.innerHTML <= 250 && p.innerHTML > 0) {
+      } else if (p.innerHTML <= 250 && p.innerHTML > 0) {
         p.classList.add("pocos-caracteres");
-        if(p.classList.contains("sin-caracteres")) {
+        if (p.classList.contains("sin-caracteres")) {
           p.classList.remove("sin-caracteres");
         }
       } else {
         p.classList.add("sin-caracteres");
-        if(p.classList.contains("pocos-caracteres")) {
+        if (p.classList.contains("pocos-caracteres")) {
           p.classList.remove("pocos-caracteres");
         }
       }
@@ -199,15 +319,62 @@ function leftCharacters(input) {
 
 fotoEmail = document.querySelector(".foto-email");
 fotoEmailImg = fotoEmail.querySelector("img");
-fotoEmail.addEventListener('mouseover', function() {
+fotoEmail.addEventListener('mouseover', function () {
   fotoEmail.classList.add('foto-email-blanco');
-  setTimeout(function() {
-    fotoEmailImg.src = "./img/mensaje-3.png";
+  setTimeout(function () {
+    fotoEmailImg.src = "./img/mensaje-4.png";
   }, 150);
 })
-fotoEmail.addEventListener('mouseleave', function() {
+fotoEmail.addEventListener('mouseleave', function () {
   fotoEmail.classList.remove('foto-email-blanco');
-  setTimeout(function() {
+  setTimeout(function () {
     fotoEmailImg.src = "./img/mensaje-1.png";
   }, 150);
 })
+
+const elementoSeguidor = document.getElementById('elemento-seguidor');
+
+// Escuchar el evento 'mousemove' en el documento
+document.addEventListener('mousemove', (event) => {
+  // Obtener las coordenadas del cursor del mouse
+  const xi = event.clientX;
+  const yi = event.clientY;
+
+  let ancho = elementoSeguidor.getBoundingClientRect().width;
+  let alto = elementoSeguidor.getBoundingClientRect().height;
+
+  let x = xi - ancho/2;
+  let y = yi + 10;
+
+  // Actualizar la posición del elemento seguidor
+  elementoSeguidor.style.left = `${x}px`;
+  elementoSeguidor.style.top = `${y}px`;
+});
+
+function scrollDown(contenedor) {
+  let proyectoVisible = contenedor.getElementsByClassName("proyecto-visible")[0];
+  let proyectoOculto = contenedor.getElementsByClassName("proyecto-oculto")[0];
+  let tituloTecnologias = contenedor.getElementsByClassName("titulo-tecnologias")[0];
+
+  // if (proyectoOculto.getBoundingClientRect().bottom > contenedor.getBoundingClientRect().bottom) {
+  //   contenedor.scrollTo({
+  //     top: proyectoOculto.offsetTop - proyectoVisible.offsetTop,
+  //     behavior: 'smooth'
+  //   });
+  // }
+  contenedor.scrollTo({
+    top: tituloTecnologias.offsetTop - (proyectoVisible.getBoundingClientRect().height * 0.03),
+    behavior: 'smooth'
+  });
+
+  elementoSeguidor.style.opacity = 1;
+}
+
+function scrollUp(contenedor) {
+  contenedor.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+
+  elementoSeguidor.style.opacity = 0;
+}

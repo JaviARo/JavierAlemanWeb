@@ -1,13 +1,12 @@
 @mixin shadow() {
   content: "";
-  background: linear-gradient(270deg, $purple, $green, $purple, $green, $purple);
   position: absolute;
   top: .2rem;
   left: .2rem;
   color: $white;
   filter: blur(20px);
   -webkit-filter: blur(20px);
-  background-size: 400%;
+  background-size: 200%;
   z-index: -1;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
@@ -16,14 +15,24 @@
   border-radius: 10px;
 }
 
+@mixin oculto() {
+  transform: translateY(10%);
+  opacity: 0;
+}
+
 #principal {
-  height: 95vh;
+  height: 95%;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: visible;
+  transform: translateY(-40px);
+  h1 {
+    @include oculto();
+  }
   h1:before, h2:before {
     content: attr(data-content);
     background: linear-gradient(15deg, $purple, $green, $purple, $green, $purple);
@@ -42,6 +51,7 @@
     font-weight: 400;
     width: 80%;
     text-align: center;
+    @include oculto();
     &:before {
       content: attr(data-content);
       background: linear-gradient(15deg, $purple, $green, $purple, $green, $purple);
@@ -49,9 +59,9 @@
       top: .2rem;
       left: .2rem;
       color: $white;
-      filter: blur(30px);
-      -webkit-filter: blur(30px);
-      background-size: 400%;
+      filter: blur(20px);
+      -webkit-filter: blur(20px);
+      background-size: 200%;
       z-index: -1;
       width: 100%;
       animation: shadow-1 20s linear infinite;
@@ -64,11 +74,13 @@
       img {
         height: 40px;
         transition: transform .3s ease-in-out;
+        @include oculto();
         &:before {
+          background: linear-gradient(270deg, $purple, $green, $purple, $green, $purple);
           @include shadow();
         }
         &:hover {
-          transform: translateY(-5px);
+          transform: translateY(-5px) !important;
           transition: transform .3s ease-in-out;
         }
       }
@@ -83,23 +95,35 @@
   }
 }
 
-#flecha {
-  position: relative;
-  height: 40px;
-  width: 40px;
-  transform: rotate(45deg) translateX(-2vh) translateY(-2vh);
-  border-bottom: 3px solid $white;
-  border-right: 3px solid $white;
-  transition: all .3s ease;
-  &:before {
-    @include shadow();
-  }
-  &:hover {
-    border-bottom: 3px solid $black;
-    border-right: 3px solid $black;
+#div-flecha {
+  @include oculto();
+  width: 100%;
+  #flecha {
+    margin: auto;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    transform: rotate(45deg) translateX(-2vh) translateY(-2vh);
+    border-bottom: 3px solid $white;
+    border-right: 3px solid $white;
     transition: all .3s ease;
-    cursor: pointer;
+    &:before {
+      background: linear-gradient(40deg, $purple, $purple, $green);
+      @include shadow();
+    }
+    &:hover {
+      border-bottom: 3px solid $black;
+      border-right: 3px solid $black;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
   }
+}
+
+.mostrar-principal {
+  transform: translateY(0%) !important;
+  opacity: 1 !important;
+  transition: opacity 0.6s ease-in-out, transform .3s ease-in-out;
 }
 
 @keyframes shadow-1 {
@@ -110,7 +134,7 @@
   }
 
   50% {
-    background-position: 400% 0;
+    background-position: 300% 0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -128,7 +152,7 @@
   }
 
   50% {
-    background-position: 400% 0;
+    background-position: 200% 0;
   }
 
   100% {

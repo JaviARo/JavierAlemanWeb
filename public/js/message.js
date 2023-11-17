@@ -17,13 +17,25 @@ async function sendMessage() {
       labelMensaje.getElementsByClassName("campo-obligatorio")[0].classList.add("mostrar");
     }
   } else {
+    const fondo = document.querySelector(".fondo-mensaje");
+    const carga = document.querySelector("#carga");
+    const enviando = document.querySelector("#h1-enviando");
+    fondo.style.display = "flex";
+    carga.style.display = "block";
+    enviando.style.display = "block";
     const { error } = await supabase
       .from('mensajes')
       .insert({ nombre: nombre.value, email: email.value, mensaje: mensaje.value }).then(response => 
       {
         if (response.status === 201) {
-          const fondo = document.querySelector(".fondo-mensaje");
-          fondo.style.display = "flex";
+          carga.style.display = "none";
+          enviando.style.display = "none";
+
+          const msgImg = fondo.querySelector("img");
+          const enviado = document.querySelector("#h1-enviado");
+          msgImg.style.display = "block";
+          enviado.style.display = "block";
+          
           setTimeout(function () {
             fondo.classList.add("animacion-fondo");
           }, 100);
@@ -31,7 +43,11 @@ async function sendMessage() {
             fondo.classList.remove("animacion-fondo");
           }, 1900);
           setTimeout(function () {
+            msgImg.style.display = "none";
+            enviado.style.display = "none";
             fondo.style.display = "none";
+            labelEmail.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
+            labelMensaje.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
           }, 2500);
         }
       })

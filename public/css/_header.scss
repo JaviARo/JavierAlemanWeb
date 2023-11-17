@@ -87,15 +87,15 @@
 }
 
 @media only screen and (min-width: 600px) {
-  @include headerMediaQueries(26px, 16px);
+  @include headerMediaQueries(22px, 14px);
 }
 
 @media only screen and (min-width: 768px) {
-  @include headerMediaQueries(32px, 16px);
+  @include headerMediaQueries(26px, 16px);
 }
 
 @media only screen and (min-width: 992px) {
-  @include headerMediaQueries(32px, 18px);
+  @include headerMediaQueries(30px, 18px);
 }
 
 @media only screen and (min-width: 1200px) {

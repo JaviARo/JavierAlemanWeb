@@ -7,10 +7,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  opacity: 1;
   transition: all .3s ease-in-out;
 
-  div {
+  #div-mensaje {
     width: 100vw;
     height: 50vh;
     flex-direction: column;
@@ -24,22 +24,38 @@
         rgba(36, 36, 36, 0.7) 75%,
         transparent 100%);
 
+    #carga {
+      display: none;
+      width: 12vw;
+      max-width: 180px;
+      height: 12vw;
+      max-height: 180px;
+      border-radius: 50%;
+      border: 0.6vw solid $green;
+      border-bottom: 0.6vw solid transparent;
+      animation: rotation 1s linear infinite;
+      position: relative;
+    }
+
     img {
+      display: none;
       width: 12vw;
       max-width: 180px;
       transition: transform .5s ease-in-out;
     }
 
     h1 {
+      display: none;
       font-family: $title;
       color: $white;
     }
   }
 }
 
-.animacion-fondo {
+.animacion-prueba {
   opacity: 1;
   transition: all .3s ease-in-out;
+
   div {
     background-image: linear-gradient(to bottom,
         transparent 0%,
@@ -52,6 +68,52 @@
       transform: scale(1.2);
       transition: transform .5s ease-in-out;
     }
+  }
+}
+
+.animacion-fondo {
+  opacity: 1;
+  transition: all .3s ease-in-out;
+
+  div {
+    background-image: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(36, 36, 36, 0.7) 25%,
+        rgba(36, 36, 36, 1) 50%,
+        rgba(36, 36, 36, 0.7) 75%,
+        transparent 100%);
+
+    img {
+      transform: scale(1.2);
+      transition: transform .5s ease-in-out;
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
   }
 }
 
