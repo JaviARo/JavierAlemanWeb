@@ -193,7 +193,6 @@ function scrollToElement(elementId) {
     case 'tecnologias':
     case 'proyectos':
       para = window.innerHeight * 0.3;
-      console.log(para)
       break;
   }
   if (pagina && element) {
@@ -202,7 +201,6 @@ function scrollToElement(elementId) {
       behavior: 'smooth'
     });
   }
-  console.log(para)
 }
 
 function leftCharacters(input) {
