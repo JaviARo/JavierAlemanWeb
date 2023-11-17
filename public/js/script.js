@@ -59,7 +59,7 @@ var contactoY = document.getElementById("contacto").offsetTop - window.innerHeig
 function headerChange() {
   sobreMiY = document.getElementById("sobre-mi").offsetTop - window.innerHeight / 2;
   tecnologiasY = document.getElementById("tecnologias").offsetTop - window.innerHeight / 2;
-  var proyectosY = document.getElementById("proyectos").offsetTop - window.innerHeight / 2;
+  proyectosY = document.getElementById("proyectos").offsetTop - window.innerHeight / 2;
   contactoY = document.getElementById("contacto").offsetTop - window.innerHeight / 1.6;
 
   headerBarScroll();
@@ -157,20 +157,7 @@ function headerBarScroll() {
       }
     }
   }
-  // if (sobreMiRect.top > pagina.scrollTop*1.5) {
-  //   sobreMi.classList.add("mostrar-seccion");
-  //   tecnologias.classList.remove("mostrar-seccion");
-  // } else if (tecnologiasRect.top > pagina.scrollTop) {
-  //   sobreMi.classList.add("mostrar-seccion");
-  //   tecnologias.classList.add("mostrar-seccion");
-  //   contacto.classList.remove("mostrar-seccion");
-  // } else if (contactoRect.top > pagina.scrollTop) {
-  //   sobreMi.classList.add("mostrar-seccion");
-  //   tecnologias.classList.add("mostrar-seccion");
-  //   contacto.classList.add("mostrar-seccion");
-  // } else {
-  //   sobreMi.classList.remove("mostrar-seccion");
-  // }
+
   if (pagina.scrollTop >= sobreMiY - 1 && pagina.scrollTop < tecnologiasY - 1) {
     sobreMi.classList.add("mostrar-seccion");
     tecnologias.classList.remove("mostrar-seccion");
@@ -191,61 +178,14 @@ function headerBarScroll() {
   } else {
     sobreMi.classList.remove("mostrar-seccion");
   }
-  // console.log(pagina.scrollTop)
-  // console.log(sobreMiY)
 }
 
 pagina.addEventListener('scroll', headerBarScroll);
 
-// function scrollToY(option) {
-//   var destinationY = 0;
-//   switch (option) {
-//     case 0:
-//       destinationY = 0;
-//       break;
-//     case 1:
-//       destinationY = document.getElementById("sobre-mi").offsetTop - paginaScroll * 0.2;
-//       break;
-//     case 2:
-//       destinationY = document.getElementById("tecnologias").offsetTop - paginaScroll * 0.3;
-//       break;
-//     case 3:
-//       destinationY = document.documentElement.scrollHeight - paginaScroll;
-//       break;
-//   }
-
-
-//   const initialY = pagina.scrollY;
-//   const diffY = destinationY - initialY;
-//   const startTime = performance.now();
-
-//   function scrollStep(timestamp) {
-//     const currentTime = timestamp || performance.now();
-//     const elapsedTime = currentTime - startTime;
-
-//     pagina.scrollTo(0, easeInOut(elapsedTime, initialY, diffY));
-
-//     if (elapsedTime < 1000) {
-//       requestAnimationFrame(scrollStep);
-//     }
-//   }
-
-//   function easeInOut(t, b, c) {
-//     // Función de aceleración para suavizar el scroll
-//     t /= 1000 / 2;
-//     if (t < 1) return (c / 2) * t * t + b;
-//     t--;
-//     return (-c / 2) * (t * (t - 2) - 1) + b;
-//   }
-
-//   requestAnimationFrame(scrollStep);
-// }
 
 function scrollToElement(elementId) {
   const element = document.getElementById(elementId);
-  // Hacer switch con elementId
   let para = 0;
-  console.log(String(elementId))
   switch (String(elementId)) {
     case 'sobre-mi':
       para = window.innerHeight * 0.2;
@@ -341,8 +281,6 @@ document.addEventListener('mousemove', (event) => {
   const yi = event.clientY;
 
   let ancho = elementoSeguidor.getBoundingClientRect().width;
-  let alto = elementoSeguidor.getBoundingClientRect().height;
-
   let x = xi - ancho/2;
   let y = yi + 10;
 
@@ -353,15 +291,8 @@ document.addEventListener('mousemove', (event) => {
 
 function scrollDown(contenedor) {
   let proyectoVisible = contenedor.getElementsByClassName("proyecto-visible")[0];
-  let proyectoOculto = contenedor.getElementsByClassName("proyecto-oculto")[0];
   let tituloTecnologias = contenedor.getElementsByClassName("titulo-tecnologias")[0];
 
-  // if (proyectoOculto.getBoundingClientRect().bottom > contenedor.getBoundingClientRect().bottom) {
-  //   contenedor.scrollTo({
-  //     top: proyectoOculto.offsetTop - proyectoVisible.offsetTop,
-  //     behavior: 'smooth'
-  //   });
-  // }
   contenedor.scrollTo({
     top: tituloTecnologias.offsetTop - (proyectoVisible.getBoundingClientRect().height * 0.03),
     behavior: 'smooth'
