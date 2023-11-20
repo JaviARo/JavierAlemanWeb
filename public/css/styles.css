@@ -369,8 +369,8 @@ h1 {
   #principal #coleccion-botones a img {
     height: 40px;
   }
-  #flecha {
-    transform: rotate(45deg) translateX(-10vh) translateY(-10vh);
+  #div-flecha {
+    transform: translateY(-5vh) !important;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -767,6 +767,9 @@ h1 {
   .debajo #foto-perfil, .seccion .debajo-proyecto #foto-perfil {
     width: 40vw !important;
     height: 40vw !important;
+  }
+  .boton-form {
+    margin-bottom: 5vh;
   }
 }
 @media only screen and (min-width: 600px) {

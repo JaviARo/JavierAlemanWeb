@@ -184,8 +184,8 @@
 
 @media only screen and (max-width: 600px) {
   @include principalMediaQueries(40px, 18px, 8px, 40px);
-  #flecha {
-    transform: rotate(45deg) translateX(-10vh) translateY(-10vh);
+  #div-flecha {
+    transform: translateY(-5vh) !important;
   }
 }
 
