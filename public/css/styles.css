@@ -370,7 +370,7 @@ h1 {
     height: 40px;
   }
   #div-flecha {
-    transform: translateY(-20vh) !important;
+    transform: translateY(-15vh) !important;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -769,7 +769,7 @@ h1 {
     height: 40vw !important;
   }
   .boton-form {
-    margin-bottom: 20vh;
+    margin-bottom: 15vh;
   }
 }
 @media only screen and (min-width: 600px) {
