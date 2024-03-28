@@ -25,31 +25,35 @@ async function sendMessage() {
     enviando.style.display = "block";
     const { error } = await supabase
       .from('mensajes')
-      .insert({ nombre: nombre.value, email: email.value, mensaje: mensaje.value }).then(response => 
-      {
-        if (response.status === 201) {
-          carga.style.display = "none";
-          enviando.style.display = "none";
+      .insert({ nombre: nombre.value, email: email.value, mensaje: mensaje.value }).then(response => {
+        let msgImg = fondo.querySelector("img");
+        let enviado = document.querySelector("#h1-enviado");
 
-          const msgImg = fondo.querySelector("img");
-          const enviado = document.querySelector("#h1-enviado");
-          msgImg.style.display = "block";
-          enviado.style.display = "block";
-          
-          setTimeout(function () {
-            fondo.classList.add("animacion-fondo");
-          }, 100);
-          setTimeout(function () {
-            fondo.classList.remove("animacion-fondo");
-          }, 1900);
-          setTimeout(function () {
-            msgImg.style.display = "none";
-            enviado.style.display = "none";
-            fondo.style.display = "none";
-            labelEmail.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
-            labelMensaje.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
-          }, 2500);
+        if (response.status === 201) {
+          msgImg.src = "./img/mensaje-2.png"
+          enviado.innerHTML = "¡Mensaje enviado!"
+        } else {
+          msgImg.src = "./img/error.png"
+          enviado.innerHTML = "Error al enviar el mensaje"
         }
+        carga.style.display = "none";
+        enviando.style.display = "none";
+        msgImg.style.display = "block";
+        enviado.style.display = "block";
+
+        setTimeout(function () {
+          fondo.classList.add("animacion-fondo");
+        }, 100);
+        setTimeout(function () {
+          fondo.classList.remove("animacion-fondo");
+        }, 1900);
+        setTimeout(function () {
+          msgImg.style.display = "none";
+          enviado.style.display = "none";
+          fondo.style.display = "none";
+          labelEmail.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
+          labelMensaje.getElementsByClassName("campo-obligatorio")[0].classList.remove("mostrar");
+        }, 2500);
       })
     document.getElementById("form-mensaje").submit();
   }

@@ -30,12 +30,25 @@
       height: 25vw;
       border: 2px solid $green;
       padding: 10px;
-      object-fit: cover;
+
+      div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: fit-content;
+        }
+      }
     }
   }
 
   .debajo-proyecto {
     @extend .debajo;
+
     .proyecto {
       width: 100%;
       border-radius: 10px;
@@ -383,6 +396,7 @@
 
 @media only screen and (min-width: 768px) {
   @include headerMediaQueries(25px, 28px, 70%, 3vw, 5, 1fr, 5px, 60%, 20px, 10px, 17px, 5, 2, 70px, 3px);
+
   .debajo-proyecto {
     width: 60vw !important;
 
@@ -394,7 +408,7 @@
       }
     }
   }
-  
+
 }
 
 @media only screen and (max-width: 992px) {
@@ -408,12 +422,15 @@
 
 @media only screen and (min-width: 992px) {
   @include headerMediaQueries(30px, 32px, 70%, 3vw, 5, 1fr, 5px, 60%, 24px, 10px, 17px, 5, 2, 80px, 3px);
+
   .debajo-proyecto {
     width: 80vw !important;
     grid-gap: 5vw !important;
+
     p {
       font-size: 20px;
     }
+
     .img-tecnologias {
       gap: 1vw !important;
 
@@ -426,6 +443,7 @@
 
 @media only screen and (min-width: 1200px) {
   @include headerMediaQueries(30px, 36px, 80%, 2vw, 10, 1fr, 5px, 60%, 26px, 12px, 20px, 10, 1, 90px, 4px);
+
   .debajo-proyecto {
     p {
       font-size: 26px;
